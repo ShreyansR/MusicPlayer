@@ -46,6 +46,13 @@
             android:layout_height="wrap_content"
             android:onClick="back"
             android:text="BACK" />
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="play"
+            android:text="Play" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

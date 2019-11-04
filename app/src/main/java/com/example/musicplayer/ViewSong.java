@@ -3,10 +3,18 @@ package com.example.musicplayer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.io.IOException;
+import java.security.KeyStore;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
 
 public class ViewSong extends AppCompatActivity{
     EditText songName;
@@ -30,6 +38,7 @@ public class ViewSong extends AppCompatActivity{
         song = musicDB.getSong(old_title);
         songName.setText(song.getSongName());
         songLink.setText(song.getSongLink());
+
 
         if (savedInstanceState != null) {
             CharSequence savedText1 = savedInstanceState.getCharSequence(KEY_NAME_VALUE);
@@ -72,6 +81,11 @@ public class ViewSong extends AppCompatActivity{
         finish();
 
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void play(View v){
+        Intent intent = new Intent(this, SongPlayer.class);
         startActivity(intent);
     }
 
