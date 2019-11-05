@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -22,7 +23,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class ViewSong extends AppCompatActivity{
     TextView songName;
     TextView songLink;
-    Button back;
+    ImageButton back;
     Intent intent;
     private static final String KEY_NAME_VALUE = "nameValue";
     private static final String KEY_LINK_VALUE = "nameValue";

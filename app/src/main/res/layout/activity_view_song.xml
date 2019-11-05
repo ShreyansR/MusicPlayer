@@ -22,30 +22,36 @@
         <TextView
             android:id="@+id/songLink"
             android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_height="96dp"
             android:ems="10"
             android:gravity="start|top"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <Button
+        <ImageButton
             android:id="@+id/editBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:onClick="edit"
+            android:src="@drawable/ic_edit"
             android:text="Edit Song" />
 
-        <Button
+        <ImageButton
             android:id="@+id/play"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:onClick="play"
+            android:src="@drawable/ic_play"
             android:text="Play" />
 
-        <Button
+        <ImageButton
             android:id="@+id/back"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:onClick="back"
+            android:src="@drawable/ic_back"
             android:text="BACK" />
 
     </LinearLayout>

@@ -13,38 +13,44 @@
 
         <EditText
             android:id="@+id/songName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/songLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
 
-        <Button
+        <ImageButton
             android:id="@+id/editBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:onClick="update"
+            android:src="@drawable/ic_save"
             android:text="Save" />
 
-        <Button
+        <ImageButton
             android:id="@+id/deleteBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:onClick="delete"
+            android:src="@drawable/ic_delete"
             android:text="Delete" />
 
-        <Button
+        <ImageButton
             android:id="@+id/back"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
             android:onClick="back"
+            android:src="@drawable/ic_back"
             android:text="BACK" />
 
     </LinearLayout>

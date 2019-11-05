@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MusicDB extends SQLiteOpenHelper{
@@ -16,6 +15,7 @@ public class MusicDB extends SQLiteOpenHelper{
     private static final String SONG_ID = "id";
     private static final String SONG_TITLE = "name";
     private static final String SONG_LENGTH = "length";
+    private static final String SONG_ARTIST = "artist";
     private static final String SONG_LINK = "link";
 
     public MusicDB(Context context) { super(context, DATABASE_NAME, null, DATABASE_VERSION);}
