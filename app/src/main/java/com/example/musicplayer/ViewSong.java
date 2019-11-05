@@ -60,7 +60,8 @@ public class ViewSong extends AppCompatActivity{
 
     public void play(View v){
         Intent intent = new Intent(this, SongPlayer.class);
-        intent.putExtra("link", songLink.getText().toString());
+        intent.putExtra("songName", songName.getText().toString());
+        intent.putExtra("songLink", songLink.getText().toString());
         startActivity(intent);
     }
 

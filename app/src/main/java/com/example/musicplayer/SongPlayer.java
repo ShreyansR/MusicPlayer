@@ -8,39 +8,53 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SongPlayer extends AppCompatActivity {
 
-    private Button btn;
-    private Button stopBtn;
+    private ImageButton btn;
+    private ImageButton stopBtn;
     private boolean playPause;
     private MediaPlayer mediaPlayer;
     private ProgressDialog progressDialog;
     private boolean initialStage = true;
+    private String songName;
     private String songLink;
+    private SeekBar songProgress;
+    private int mediaFileLength;
+    private int realTimeLength;
+    final Handler handler = new Handler();
+    TextView songPlaying;
     Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_player);
-        btn = (Button) findViewById(R.id.playPauseBtn);
-        stopBtn = (Button) findViewById(R.id.stopBtn);
+        btn = (ImageButton) findViewById(R.id.playPauseBtn);
+        stopBtn = (ImageButton) findViewById(R.id.stopBtn);
+        songPlaying = (TextView) findViewById(R.id.songPlaying);
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         intent = getIntent();
-        songLink = intent.getStringExtra("link");
+        songLink = intent.getStringExtra("songLink");
+        songName = intent.getStringExtra("songName");
+        songPlaying.setText("Now Playing: " + songName);
         System.out.println(songLink);
         progressDialog = new ProgressDialog(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!playPause){
-                    btn.setText("Pause");
+                    btn.setImageResource(R.drawable.ic_pause);
 
                     if (initialStage) {
                         new Player().execute(songLink);
@@ -52,7 +66,7 @@ public class SongPlayer extends AppCompatActivity {
                     playPause = true;
                 }
                 else {
-                    btn.setText("Play");
+                    btn.setImageResource(R.drawable.ic_play);
 
                     if (mediaPlayer.isPlaying()) {
                         mediaPlayer.pause();
@@ -68,7 +82,7 @@ public class SongPlayer extends AppCompatActivity {
                 if (mediaPlayer != null) {
                     initialStage = true;
                     playPause = false;
-                    btn.setText("Play");
+                    btn.setImageResource(R.drawable.ic_play);
                     mediaPlayer.stop();
                     mediaPlayer.reset();
                     System.out.println("Stopped");
@@ -108,7 +122,7 @@ public class SongPlayer extends AppCompatActivity {
                     public void onCompletion(MediaPlayer mp) {
                         initialStage = true;
                         playPause = false;
-                        btn.setText("Play");
+                        btn.setImageResource(R.drawable.ic_play);
                         mediaPlayer.stop();
                         mediaPlayer.reset();
                     }
@@ -126,7 +140,8 @@ public class SongPlayer extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
 
             super.onPostExecute(aBoolean);
-
+            mediaFileLength = mediaPlayer.getDuration();
+            realTimeLength = mediaFileLength;
             if (progressDialog.isShowing()){
                 progressDialog.cancel();
             }
@@ -142,4 +157,6 @@ public class SongPlayer extends AppCompatActivity {
             progressDialog.show();
         }
     }
+
+
 }
