@@ -11,34 +11,35 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/songName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#F44336" />
 
-        <EditText
+        <TextView
             android:id="@+id/songLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
             android:ems="10"
             android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
         <Button
-            android:id="@+id/saveBtn"
+            android:id="@+id/editBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="update"
-            android:text="Save" />
+            android:onClick="edit"
+            android:text="Edit Song" />
 
         <Button
-            android:id="@+id/deleteBtn"
+            android:id="@+id/play"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="delete"
-            android:text="Delete" />
+            android:onClick="play"
+            android:text="Play" />
 
         <Button
             android:id="@+id/back"
@@ -46,6 +47,7 @@
             android:layout_height="wrap_content"
             android:onClick="back"
             android:text="BACK" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

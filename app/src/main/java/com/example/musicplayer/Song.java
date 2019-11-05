@@ -20,7 +20,7 @@ public class Song extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song);
         musicDB = new MusicDB(this);
-        saveB = findViewById(R.id.saveBtn);
+        saveB = findViewById(R.id.editBtn);
         songName = findViewById(R.id.songName);
         songLink = findViewById(R.id.songLink);
 
