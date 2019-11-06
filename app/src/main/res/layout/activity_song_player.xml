@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".SongPlayer">
 
     <LinearLayout
@@ -19,12 +20,14 @@
         <ImageButton
             android:id="@+id/playPauseBtn"
             android:src="@drawable/ic_play"
+            android:background="@android:color/transparent"
             android:layout_width="206dp"
             android:layout_height="match_parent" />
 
         <ImageButton
             android:id="@+id/stopBtn"
             android:src="@drawable/ic_stop"
+            android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="133dp"
             android:layout_weight="1" />
@@ -46,6 +49,22 @@
         app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/songPlayingArtist"
+        android:layout_width="361dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="316dp"
+        android:text="By: "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#9C27B0"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="242dp"
@@ -53,6 +72,11 @@
         android:layout_marginStart="84dp"
         android:layout_marginEnd="85dp"
         android:layout_marginBottom="107dp"
+        android:clickable="true"
+        android:indeterminateTint="#673AB7"
+        android:progressBackgroundTint="#FFFFFF"
+        android:secondaryProgressTint="#9C27B0"
+        android:thumbTint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

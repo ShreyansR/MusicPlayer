@@ -18,6 +18,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class SongPlayer extends AppCompatActivity {
 
     private ImageButton btn;
@@ -27,12 +29,15 @@ public class SongPlayer extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private boolean initialStage = true;
     private String songName;
+    private String songArtist;
     private String songLink;
     private SeekBar songProgress;
     private int mediaFileLength;
     private int realTimeLength;
-    final Handler handler = new Handler();
+    private Handler handler;
+    private Runnable runnable;
     TextView songPlaying;
+    TextView songPlayingArtist;
     Intent intent;
 
     @Override
@@ -40,15 +45,31 @@ public class SongPlayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_player);
         btn = (ImageButton) findViewById(R.id.playPauseBtn);
+        handler = new Handler();
+        songProgress = (SeekBar)findViewById(R.id.seekBar);
+        songProgress.setMax(99);
+        songProgress.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(mediaPlayer.isPlaying()){
+                    SeekBar songProgress = (SeekBar)v;
+                    int playPosition = (mediaFileLength/100)*songProgress.getProgress();
+                    mediaPlayer.seekTo(playPosition);
+                }
+                return false;
+            }
+        });
         stopBtn = (ImageButton) findViewById(R.id.stopBtn);
         songPlaying = (TextView) findViewById(R.id.songPlaying);
+        songPlayingArtist = (TextView) findViewById(R.id.songPlayingArtist);
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         intent = getIntent();
         songLink = intent.getStringExtra("songLink");
+        songArtist = intent.getStringExtra("songArtist");
         songName = intent.getStringExtra("songName");
         songPlaying.setText("Now Playing: " + songName);
-        System.out.println(songLink);
+        songPlayingArtist.setText("By: " + songArtist);
         progressDialog = new ProgressDialog(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,14 +123,6 @@ public class SongPlayer extends AppCompatActivity {
         }
     }
 
-    public void stop(View v){
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-            mediaPlayer = null;
-            Toast.makeText(this, "MediPlayer released", Toast.LENGTH_SHORT);
-        }
-    }
-
     class Player extends AsyncTask<String, Void, Boolean> {
         @Override
         protected Boolean doInBackground(String... strings) {
@@ -147,6 +160,7 @@ public class SongPlayer extends AppCompatActivity {
             }
             mediaPlayer.start();
             initialStage = false;
+            updateSeekBar();
         }
 
         @Override
@@ -158,5 +172,18 @@ public class SongPlayer extends AppCompatActivity {
         }
     }
 
+    private void updateSeekBar() {
+        songProgress.setProgress((int )(((float)mediaPlayer.getCurrentPosition() / mediaFileLength)*100));
+        if(mediaPlayer.isPlaying()){
+            Runnable updater = new Runnable() {
+                @Override
+                public void run() {
+                    updateSeekBar();
+                    realTimeLength-=1000;
 
+                }
+            };
+            handler.postDelayed(updater, 1000);
+        }
+    }
 }

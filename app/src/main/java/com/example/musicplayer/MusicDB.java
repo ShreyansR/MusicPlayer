@@ -22,7 +22,7 @@ public class MusicDB extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_SONG_TABLE = "CREATE TABLE "+TABLE_NAME+"("+SONG_ID+" INTEGER PRIMARY KEY,"+SONG_TITLE+" TEXT,"+SONG_LINK+" TEXT)";
+        String CREATE_SONG_TABLE = "CREATE TABLE "+TABLE_NAME+"("+SONG_ID+" INTEGER PRIMARY KEY,"+SONG_TITLE+" TEXT, "+SONG_ARTIST+" TEXT, "+SONG_LINK+" TEXT)";
         db.execSQL(CREATE_SONG_TABLE);
     }
 
@@ -35,6 +35,7 @@ public class MusicDB extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(SONG_TITLE, song.getSongName());
+        values.put(SONG_ARTIST, song.getSongArtist());
         values.put(SONG_LINK, song.getSongLink());
 
         db.insert(TABLE_NAME, null, values);
@@ -53,6 +54,7 @@ public class MusicDB extends SQLiteOpenHelper{
             return null;
         }
         song.setSongName(c.getString(c.getColumnIndex(SONG_TITLE)));
+        song.setSongArtist(c.getString(c.getColumnIndex(SONG_ARTIST)));
         song.setSongLink(c.getString(c.getColumnIndex(SONG_LINK)));
         db.close();
         return song;
@@ -65,11 +67,12 @@ public class MusicDB extends SQLiteOpenHelper{
         Cursor c = db.rawQuery("DELETE FROM "+TABLE_NAME+" WHERE "+SONG_TITLE+" = ?",new String [] {name});
         c.moveToFirst();
         song.setSongName(null);
+        song.setSongArtist(null);
         song.setSongLink(null);
         db.close();
     }
 
-    void updateSong(String old_title, String new_title, String new_link){
+    void updateSong(String old_title, String new_title, String new_artist, String new_link){
         SQLiteDatabase db = this.getReadableDatabase();
         SongClass song = new SongClass();
         Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+SONG_TITLE+" = ?",new String [] {old_title});
@@ -78,8 +81,9 @@ public class MusicDB extends SQLiteOpenHelper{
         {
             db.close();
         }
-        db.execSQL("Update "+TABLE_NAME+" Set "+SONG_TITLE+" = '"+new_title+"',"+SONG_LINK+" = '"+new_link+"' WHERE "+SONG_TITLE+" = ?",new String [] {old_title});
+        db.execSQL("Update "+TABLE_NAME+" Set "+SONG_TITLE+" = '"+new_title+"', "+SONG_ARTIST+" = '"+new_artist+"', "+SONG_LINK+" = '"+new_link+"' WHERE "+SONG_TITLE+" = ?",new String [] {old_title});
         song.setSongName(c.getString(c.getColumnIndex(SONG_TITLE)));
+        song.setSongArtist(c.getString(c.getColumnIndex(SONG_ARTIST)));
         song.setSongLink(c.getString(c.getColumnIndex(SONG_LINK)));
         db.close();
     }

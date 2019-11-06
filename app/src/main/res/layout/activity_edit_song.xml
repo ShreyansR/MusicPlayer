@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".EditSong">
 
     <LinearLayout
@@ -14,9 +15,21 @@
         <EditText
             android:id="@+id/songName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="91dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:fontFamily="cursive"
+            android:inputType="textPersonName"
+            android:textColor="#F00621"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/artistName"
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="#E040FB"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/songLink"
@@ -24,7 +37,8 @@
             android:layout_height="91dp"
             android:ems="10"
             android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textColor="#F8F7F8" />
 
         <ImageButton
             android:id="@+id/editBtn"

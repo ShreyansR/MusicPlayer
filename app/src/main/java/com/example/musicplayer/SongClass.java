@@ -2,12 +2,14 @@ package com.example.musicplayer;
 
 public class SongClass {
     private String songName;
+    private String songArtist;
     private String songLink;
 
     public SongClass(){};
 
-    public SongClass(String songName, String songLink){
+    public SongClass(String songName, String songArtist, String songLink){
         this.songName = songName;
+        this.songArtist = songArtist;
         this.songLink = songLink;
     }
 
@@ -17,6 +19,14 @@ public class SongClass {
 
     public void setSongName(String songName) {
         this.songName = songName;
+    }
+
+    public String getSongArtist(){
+        return songArtist;
+    }
+
+    public void setSongArtist (String songArtist) {
+        this.songArtist = songArtist;
     }
 
     public String getSongLink(){

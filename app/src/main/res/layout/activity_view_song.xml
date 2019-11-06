@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".ViewSong">
 
     <LinearLayout
@@ -13,11 +14,25 @@
 
         <TextView
             android:id="@+id/songName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
             android:ems="10"
+            android:fontFamily="cursive"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#F44336"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/artistName"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:ems="10"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#F44336" />
+            android:textColor="#2196F3"
+            android:textSize="24sp"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/songLink"
@@ -25,7 +40,10 @@
             android:layout_height="96dp"
             android:ems="10"
             android:gravity="start|top"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
         <ImageButton
             android:id="@+id/editBtn"

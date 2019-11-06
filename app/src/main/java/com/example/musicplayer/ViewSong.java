@@ -22,6 +22,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class ViewSong extends AppCompatActivity{
     TextView songName;
+    TextView songArtist;
     TextView songLink;
     ImageButton back;
     Intent intent;
@@ -34,6 +35,7 @@ public class ViewSong extends AppCompatActivity{
         setContentView(R.layout.activity_view_song);
         intent = getIntent();
         songName = findViewById(R.id.songName);
+        songArtist = findViewById(R.id.artistName);
         songLink = findViewById(R.id.songLink);
         back = findViewById(R.id.back);
         String old_title = intent.getStringExtra("songName");
@@ -41,6 +43,7 @@ public class ViewSong extends AppCompatActivity{
         MusicDB musicDB = new MusicDB(this);
         song = musicDB.getSong(old_title);
         songName.setText(song.getSongName());
+        songArtist.setText((song.getSongArtist()));
         songLink.setText(song.getSongLink());
 
 
@@ -55,6 +58,7 @@ public class ViewSong extends AppCompatActivity{
     public void edit(View v){
         Intent intent = new Intent(this, EditSong.class);
         intent.putExtra("songName", songName.getText().toString());
+        intent.putExtra("songArtist", songArtist.getText().toString());
         intent.putExtra("songLink", songLink.getText().toString());
         startActivity(intent);
     }
@@ -62,6 +66,7 @@ public class ViewSong extends AppCompatActivity{
     public void play(View v){
         Intent intent = new Intent(this, SongPlayer.class);
         intent.putExtra("songName", songName.getText().toString());
+        intent.putExtra("songArtist", songArtist.getText().toString());
         intent.putExtra("songLink", songLink.getText().toString());
         startActivity(intent);
     }

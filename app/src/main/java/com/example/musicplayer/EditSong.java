@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 public class EditSong extends AppCompatActivity {
 
     EditText songName;
+    EditText songArtist;
     EditText songLink;
     ImageButton back;
     Intent intent;
@@ -24,6 +25,7 @@ public class EditSong extends AppCompatActivity {
         setContentView(R.layout.activity_edit_song);
         intent = getIntent();
         songName = findViewById(R.id.songName);
+        songArtist = findViewById(R.id.artistName);
         songLink = findViewById(R.id.songLink);
         back = findViewById(R.id.back);
         String old_title = intent.getStringExtra("songName");
@@ -31,6 +33,7 @@ public class EditSong extends AppCompatActivity {
         MusicDB musicDB = new MusicDB(this);
         song = musicDB.getSong(old_title);
         songName.setText(song.getSongName());
+        songArtist.setText(song.getSongArtist());
         songLink.setText(song.getSongLink());
 
         if (savedInstanceState != null) {
@@ -68,8 +71,9 @@ public class EditSong extends AppCompatActivity {
         System.out.println(old_title);
         MusicDB updateSong = new MusicDB(this);
         String new_title = songName.getText().toString();
+        String new_artist = songArtist.getText().toString();
         String new_link = songLink.getText().toString();
-        updateSong.updateSong(old_title, new_title, new_link);
+        updateSong.updateSong(old_title, new_title, new_artist, new_link);
         updateSong.close();
         finish();
 

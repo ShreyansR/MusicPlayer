@@ -18,7 +18,8 @@
             android:id="@+id/songsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="15">
+            android:layout_weight="15"
+            android:background="#D3512DA8">
 
         </ListView>
 
@@ -26,7 +27,7 @@
             android:id="@+id/searchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="#D3512DA8"
             android:ems="10"
             android:hint="Search...."
             android:inputType="textPersonName"
@@ -37,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
+            android:background="#D3512DA8"
             android:onClick="newSong"
             android:src="@drawable/ic_add"
             android:text="New Song" />
