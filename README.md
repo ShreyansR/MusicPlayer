@@ -1,6 +1,7 @@
 # Assignment 2 - Music Player
 
 ### Pixel 2 API 26
+### Note: The github repository changes the package name once its cloned. all android files must be in folder called MusicPlayer for the application to run properly.
 
 #### Home screen
 ![](Screenshots/1.JPG)
