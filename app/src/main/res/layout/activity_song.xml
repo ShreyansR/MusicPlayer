@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Song Name:"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
         <EditText
@@ -27,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/textView3"
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:text="Artist Name:"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
         <EditText
@@ -42,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/textView2"
@@ -50,6 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Song Link:"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
         <EditText
@@ -58,7 +63,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textColor="#FFFFFF" />
 
         <ImageButton
             android:id="@+id/editBtn"
