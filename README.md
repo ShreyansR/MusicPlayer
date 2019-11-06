@@ -3,19 +3,19 @@
 ### Pixel 2 API 26
 
 #### Home screen
-![](Screenshots/1.jpg)
+![](Screenshots/1.JPG)
 
 #### Search Screen
-![](Screenshots/2.jpg)
+![](Screenshots/2.JPG)
 
 #### Add song screen
-![](Screenshots/3.jpg)
+![](Screenshots/3.JPG)
 
 #### View song screen
-![](Screenshots/4.jpg)
+![](Screenshots/4.JPG)
 
 #### Edit song screen
-![](Screenshots/5.jpg)
+![](Screenshots/5.JPG)
 
 #### Music Player Screen
-![](Screenshots/6.jpg)
+![](Screenshots/6.JPG)
